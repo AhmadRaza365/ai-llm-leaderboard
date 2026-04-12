@@ -1,0 +1,21 @@
+import Link from "next/link"
+import { NavigationMenuLink } from "./navigation-menu"
+
+export default function ListItem({
+  title,
+  children,
+  href,
+  ...props
+}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+  return (
+    <li {...props}>
+      <NavigationMenuLink asChild>
+        <Link href={href}>
+          <div className="flex flex-col gap-1 text-sm">
+            <div className="leading-none font-medium">{title}</div>
+          </div>
+        </Link>
+      </NavigationMenuLink>
+    </li>
+  )
+}
