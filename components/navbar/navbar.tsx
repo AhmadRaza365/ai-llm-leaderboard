@@ -5,7 +5,7 @@ import ThemeSwitch from "./ThemeSwitch"
 
 const Navbar = () => {
   return (
-    <nav className="border-b bg-background py-2.5">
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/10 backdrop-blur-lg py-2.5">
       <div className="container mx-auto flex h-full items-center justify-between px-4 sm:px-6 lg:px-8">
         <Logo />
 
