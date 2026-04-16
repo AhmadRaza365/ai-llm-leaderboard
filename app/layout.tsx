@@ -3,6 +3,7 @@ import { Geist_Mono, IBM_Plex_Sans, Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import Navbar from "@/components/navbar/navbar"
+import Footer from "@/components/Footer"
 
 const interHeading = Inter({ subsets: ["latin"], variable: "--font-heading" })
 
@@ -37,6 +38,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Navbar />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

@@ -18,14 +18,14 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => (
   <NavigationMenu {...props}>
     <NavigationMenuList className="gap-1 space-x-0 text-sm">
       <NavigationMenuItem id="categories">
-        <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+        <NavigationMenuTrigger>Leaderboards</NavigationMenuTrigger>
         <NavigationMenuContent className="z-100">
           <ul className="w-40">
             {CATEGORIES.map((category, index) => {
               return (
                 <ListItem
                   key={`nav-menu-categories-${index}`}
-                  href={category.slug}
+                  href={`/leaderboards/${category.slug}`}
                   title={category.name}
                 >
                   {category.name}
@@ -37,12 +37,7 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/new-models">New Models</Link>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
-      <NavigationMenuItem>
-        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href="/benchmarks">Benchmarks</Link>
+          <Link href="/models">New Models</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
       <NavigationMenuItem>

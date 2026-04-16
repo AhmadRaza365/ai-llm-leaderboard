@@ -43,7 +43,7 @@ export default function Hero() {
             </Button>
           </Link>
 
-          <Link href="/leaderboards">
+          <Link href="/leaderboards/general">
             <Button
               className="cursor-pointer rounded-full text-base shadow-none"
               size="lg"

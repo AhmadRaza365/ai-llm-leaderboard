@@ -10,11 +10,19 @@ type Props = {
   companyName: string
   rank: number
   tokens?: number
+  layoutType?: "standalone" | "compact"
 }
 
-function RankingCard({ name, description, companyName, rank, tokens }: Props) {
+function RankingCard({
+  name,
+  description,
+  companyName,
+  rank,
+  tokens,
+  layoutType = "standalone",
+}: Props) {
   const layout: "large" | "compact" =
-    rank >= 1 && rank <= 3 ? "large" : "compact"
+    rank >= 1 && rank <= 3 && layoutType !== "compact" ? "large" : "compact"
 
   return (
     <section

@@ -16,51 +16,50 @@
 export const CATEGORIES = [
   {
     name: "Programming",
-    slug: "/programming",
+    slug: "programming",
   },
   {
     name: "Roleplay",
-    slug: "/roleplay",
+    slug: "roleplay",
   },
   {
     name: "Marketing",
-    slug: "/marketing",
+    slug: "marketing",
   },
   {
     name: "SEO",
-    slug: "/seo",
+    slug: "seo",
   },
   {
     name: "Technology",
-    slug: "/technology",
+    slug: "technology",
   },
   {
     name: "Science",
-    slug: "/science",
+    slug: "science",
   },
   {
     name: "Translation",
-    slug: "/translation",
+    slug: "translation",
   },
   {
     name: "Legal",
-    slug: "/legal",
+    slug: "legal",
   },
   {
     name: "Finance",
-    slug: "/finance",
+    slug: "finance",
   },
   {
     name: "Health",
-    slug: "/health",
+    slug: "health",
   },
   {
     name: "Trivia",
-    slug: "/trivia",
+    slug: "trivia",
   },
   {
     name: "Academia",
-    slug: "/academia",
+    slug: "academia",
   },
-]
-// .sort((a, b) => a.name.localeCompare(b.name))
+].sort((a, b) => a.name.localeCompare(b.name))

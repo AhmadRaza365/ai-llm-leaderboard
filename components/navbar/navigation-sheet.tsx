@@ -33,13 +33,13 @@ export const NavigationSheet = () => {
           </Link>
 
           <div>
-            <div className="font-bold">Categories</div>
+            <div className="font-bold">Leaderboards</div>
             <ul className="mt-2 ml-1 space-y-3 border-l pl-4">
               {CATEGORIES.map((category, index) => (
                 <li key={index}>
                   <Link
                     className="flex items-center gap-2"
-                    href={category.slug}
+                    href={`/leaderboards/${category.slug}`}
                   >
                     {category.name}
                   </Link>
@@ -47,11 +47,8 @@ export const NavigationSheet = () => {
               ))}
             </ul>
           </div>
-          <Link className="inline-block" href="/new-models">
+          <Link className="inline-block" href="/models">
             New Models
-          </Link>
-          <Link className="inline-block" href="/benchmarks">
-            Benchmarks
           </Link>
           <Link className="inline-block" href="/blog">
             Blog
