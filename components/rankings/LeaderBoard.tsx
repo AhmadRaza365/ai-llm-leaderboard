@@ -1,4 +1,8 @@
 "use client"
+
+import { Ranking } from "@/interfaces/Ranking"
+import React from "react"
+import { GlowingEffect } from "../ui/glowing-effect"
 import {
   Combobox,
   ComboboxContent,
@@ -9,17 +13,8 @@ import {
 } from "../ui/combobox"
 import { CATEGORIES } from "@/data/Categories"
 import RankingCard from "./RankingCard"
-import { GlowingEffect } from "../ui/glowing-effect"
-import { Ranking } from "@/interfaces/Ranking"
 
-type Props = {
-  layout?: "standalone" | "compact"
-  details: Ranking
-}
-
-function RankingSection({ layout = "standalone", details }: Props) {
-  const { name, description, ranks } = details
-
+function LeaderBoard({ name, description, ranks }: Ranking) {
   return (
     <section className="relative mx-auto mb-4 flex h-fit max-w-7xl flex-col rounded-lg border bg-background px-6 py-8 sm:py-10">
       <GlowingEffect
@@ -31,23 +26,11 @@ function RankingSection({ layout = "standalone", details }: Props) {
       />
 
       <section className="flex flex-col items-start justify-between gap-4 lg:flex-row">
-        <section
-          className={`${layout === "standalone" ? "max-w-xl" : "max-w-xl"}`}
-        >
-          <h2
-            className={`${
-              layout === "standalone"
-                ? "text-2xl font-bold tracking-tight sm:text-3xl"
-                : "text-lg font-bold tracking-tight sm:text-xl"
-            }`}
-          >
+        <section className={`max-w-xl`}>
+          <h1 className={`text-2xl font-bold tracking-tight sm:text-3xl`}>
             {name}
-          </h2>
-          <p
-            className={`mt-3.5 text-pretty text-muted-foreground ${
-              layout === "standalone" ? "text-base" : "text-sm"
-            }`}
-          >
+          </h1>
+          <p className={`mt-3.5 text-base text-pretty text-muted-foreground`}>
             {description}
           </p>
         </section>
@@ -75,17 +58,9 @@ function RankingSection({ layout = "standalone", details }: Props) {
       </section>
 
       <section
-        className={`mt-8 grid gap-3 ${
-          layout === "standalone"
-            ? "grid-cols-1 lg:grid-cols-2 lg:gap-5"
-            : "grid-cols-1"
-        }`}
+        className={`mt-8 grid grid-cols-1 gap-3 lg:grid-cols-2 lg:gap-5`}
       >
-        <section
-          className={`${
-            layout === "standalone" ? "space-y-2 lg:space-y-6" : "space-y-2"
-          }`}
-        >
+        <section className={`space-y-2 lg:space-y-6`}>
           {ranks.slice(0, 3).map((rank, index) => {
             const { name, authorDisplayName, description, contextLength } =
               rank.model
@@ -98,36 +73,32 @@ function RankingSection({ layout = "standalone", details }: Props) {
                 companyName={authorDisplayName}
                 rank={rank.position}
                 tokens={contextLength}
-                layoutType={layout}
+                layoutType="standalone"
               />
             )
           })}
         </section>
-        <section
-          className={`${layout === "standalone" ? "space-y-2" : "space-y-2"}`}
-        >
-          {ranks
-            .slice(3, layout === "standalone" ? 10 : 5)
-            .map((rank, index) => {
-              const { name, authorDisplayName, description, contextLength } =
-                rank.model
+        <section className={`space-y-2`}>
+          {ranks.slice(3, 10).map((rank, index) => {
+            const { name, authorDisplayName, description, contextLength } =
+              rank.model
 
-              return (
-                <RankingCard
-                  key={index}
-                  name={name}
-                  description={description}
-                  companyName={authorDisplayName}
-                  rank={rank.position}
-                  tokens={contextLength}
-                  layoutType={layout}
-                />
-              )
-            })}
+            return (
+              <RankingCard
+                key={index}
+                name={name}
+                description={description}
+                companyName={authorDisplayName}
+                rank={rank.position}
+                tokens={contextLength}
+                layoutType="standalone"
+              />
+            )
+          })}
         </section>
       </section>
     </section>
   )
 }
 
-export default RankingSection
+export default LeaderBoard

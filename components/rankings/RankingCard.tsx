@@ -3,6 +3,7 @@ import React from "react"
 import FirstMedal from "@/assets/icons/FirstMadel.png"
 import SecondMadel from "@/assets/icons/SecondMadel.png"
 import ThirdMadel from "@/assets/icons/ThirdMadel.png"
+import { formatNumberToShortScaleNotation } from "@/lib/formatNumber"
 
 type Props = {
   name: string
@@ -26,9 +27,8 @@ function RankingCard({
 
   return (
     <section
-      className={`relative flex h-fit items-start gap-4 overflow-hidden rounded-lg border bg-card text-card-foreground shadow ${
-        layout === "large" ? "p-6" : "px-4 py-3"
-      }`}
+      className={`relative flex h-fit items-start gap-4 overflow-hidden rounded-lg border bg-card text-card-foreground shadow ${layout === "large" ? "p-6" : "px-4 py-3"
+        }`}
     >
       {layout === "compact" && (
         <section className="flex aspect-square h-12 w-12 items-center justify-center">
@@ -36,11 +36,10 @@ function RankingCard({
         </section>
       )}
       <section
-        className={`relative flex aspect-square items-center justify-center overflow-hidden ${
-          layout === "large"
-            ? "h-25 w-25 min-w-25 rounded"
-            : "h-12 w-12 min-w-5 rounded-full"
-        }`}
+        className={`relative flex aspect-square items-center justify-center overflow-hidden ${layout === "large"
+          ? "h-25 w-25 min-w-25 rounded"
+          : "h-12 w-12 min-w-5 rounded-full"
+          }`}
       >
         <Image
           src="/images/icons/anthropic.jpg"
@@ -52,9 +51,8 @@ function RankingCard({
       </section>
       <section className="z-2 max-w-xs">
         <h4
-          className={`font-semibold ${
-            layout === "large" ? "mb-1 text-xl" : "text-lg"
-          }`}
+          className={`font-semibold ${layout === "large" ? "mb-1 text-xl" : "text-lg"
+            }`}
         >
           {name}
         </h4>
@@ -65,17 +63,17 @@ function RankingCard({
 
           {tokens && layout === "large" && (
             <>
-              •<p className="text-sm font-normal">{tokens} tokens</p>
+              •<p className="text-sm font-normal">{formatNumberToShortScaleNotation(tokens)} tokens</p>
             </>
           )}
         </div>
         {layout === "large" && (
-          <p className="mt-2 text-sm font-normal">{description}</p>
+          <p className="mt-2 text-sm font-normal line-clamp-2">{description}</p>
         )}
       </section>
 
       {tokens && layout === "compact" && (
-        <p className="ml-auto text-base font-normal">{tokens} tokens</p>
+        <p className="ml-auto text-base font-normal">{formatNumberToShortScaleNotation(tokens)} tokens</p>
       )}
 
       {layout === "large" && (

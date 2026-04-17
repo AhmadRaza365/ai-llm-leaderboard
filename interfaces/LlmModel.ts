@@ -3,8 +3,8 @@ export interface LlmModel {
   slug: string
   author: string
   authorDisplayName: string
-  tokens: number
-  shortDescription: string
+  contextLength: number
+  description: string
   releaseDate: string
   inputModalities: string[]
   outputModalities: string[]
