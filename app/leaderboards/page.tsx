@@ -17,7 +17,7 @@ function LeaderBoardsPage() {
       title: "LLM Rankings by Language",
       description:
         "Real-time rankings of the best LLMs for English, Arabic, Spanish, French, Chinese, Hindi & more. Optimized for fluency, accuracy & cultural nuance.",
-      link: "/leaderboards/languages",
+      link: "/leaderboards/natural-languages",
     },
     {
       area: "md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]",

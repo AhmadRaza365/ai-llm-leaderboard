@@ -12,6 +12,7 @@ type Props = {
   rank: number
   tokens?: number
   layoutType?: "standalone" | "compact"
+  image?: string
 }
 
 function RankingCard({
@@ -21,14 +22,16 @@ function RankingCard({
   rank,
   tokens,
   layoutType = "standalone",
+  image,
 }: Props) {
   const layout: "large" | "compact" =
     rank >= 1 && rank <= 3 && layoutType !== "compact" ? "large" : "compact"
 
   return (
     <section
-      className={`relative flex h-fit items-start gap-4 overflow-hidden rounded-lg border bg-card text-card-foreground shadow ${layout === "large" ? "p-6" : "px-4 py-3"
-        }`}
+      className={`relative flex h-fit items-start gap-4 overflow-hidden rounded-lg border bg-card text-card-foreground shadow ${
+        layout === "large" ? "p-6" : "px-4 py-3"
+      }`}
     >
       {layout === "compact" && (
         <section className="flex aspect-square h-12 w-12 items-center justify-center">
@@ -36,14 +39,15 @@ function RankingCard({
         </section>
       )}
       <section
-        className={`relative flex aspect-square items-center justify-center overflow-hidden ${layout === "large"
-          ? "h-25 w-25 min-w-25 rounded"
-          : "h-12 w-12 min-w-5 rounded-full"
-          }`}
+        className={`relative flex aspect-square items-center justify-center overflow-hidden ${
+          layout === "large"
+            ? "h-25 w-25 min-w-25 rounded"
+            : "h-12 w-12 min-w-5 rounded-full"
+        }`}
       >
         <Image
-          src="/images/icons/anthropic.jpg"
-          alt="Anthropic"
+          src={image || "/images/icons/anthropic.jpg"}
+          alt={name}
           width={100}
           height={100}
           className="absolute top-0 left-0 h-full w-full object-cover object-center"
@@ -51,8 +55,9 @@ function RankingCard({
       </section>
       <section className="z-2 max-w-xs">
         <h4
-          className={`font-semibold ${layout === "large" ? "mb-1 text-xl" : "text-lg"
-            }`}
+          className={`font-semibold ${
+            layout === "large" ? "mb-1 text-xl" : "text-lg"
+          }`}
         >
           {name}
         </h4>
@@ -63,17 +68,22 @@ function RankingCard({
 
           {tokens && layout === "large" && (
             <>
-              •<p className="text-sm font-normal">{formatNumberToShortScaleNotation(tokens)} tokens</p>
+              •
+              <p className="text-sm font-normal">
+                {formatNumberToShortScaleNotation(tokens)} tokens
+              </p>
             </>
           )}
         </div>
         {layout === "large" && (
-          <p className="mt-2 text-sm font-normal line-clamp-2">{description}</p>
+          <p className="mt-2 line-clamp-2 text-sm font-normal">{description}</p>
         )}
       </section>
 
       {tokens && layout === "compact" && (
-        <p className="ml-auto text-base font-normal">{formatNumberToShortScaleNotation(tokens)} tokens</p>
+        <p className="ml-auto text-base font-normal">
+          {formatNumberToShortScaleNotation(tokens)} tokens
+        </p>
       )}
 
       {layout === "large" && (

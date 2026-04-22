@@ -1,8 +1,5 @@
-
 function ModelsPage() {
-    return (
-        <main className="py-16 min-h-svh mt-20">ModelsPage</main>
-    )
+  return <main className="mt-20 min-h-svh py-16">ModelsPage</main>
 }
 
 export default ModelsPage

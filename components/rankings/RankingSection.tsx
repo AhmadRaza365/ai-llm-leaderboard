@@ -7,21 +7,33 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "../ui/combobox"
-import { CATEGORIES } from "@/data/Categories"
 import RankingCard from "./RankingCard"
 import { GlowingEffect } from "../ui/glowing-effect"
 import { Ranking } from "@/interfaces/Ranking"
+import { useRouter } from "next/navigation"
 
 type Props = {
   layout?: "standalone" | "compact"
   details: Ranking
+  selectionOptions: {
+    name: string
+    slug: string
+  }[]
+  preSelectedOption: string
 }
 
-function RankingSection({ layout = "standalone", details }: Props) {
+function RankingSection({
+  layout = "standalone",
+  details,
+  selectionOptions,
+  preSelectedOption,
+}: Props) {
   const { name, description, ranks } = details
+  const router = useRouter()
+  const ranking = (ranks || []).sort((a, b) => a.position - b.position)
 
   return (
-    <section className="relative mx-auto mb-4 flex h-fit max-w-7xl flex-col rounded-lg border bg-background px-6 py-8 sm:py-10">
+    <section className="relative mx-auto mb-4 flex h-full w-full max-w-7xl flex-col rounded-lg border bg-background px-6 py-8 sm:py-10">
       <GlowingEffect
         spread={40}
         glow={true}
@@ -53,11 +65,17 @@ function RankingSection({ layout = "standalone", details }: Props) {
         </section>
         <section className="min-w-fit">
           <Combobox
-            items={CATEGORIES.map((category) => category.name)}
+            items={selectionOptions.map((category) => category.name)}
             onValueChange={(value) => {
-              console.log("value", value)
+              const slug = selectionOptions.find(
+                (option) => option.name === value
+              )?.slug
+
+              if (slug) {
+                router.push(`/leaderboards/${slug}`)
+              }
             }}
-            defaultInputValue=""
+            defaultValue={preSelectedOption}
           >
             <ComboboxInput placeholder="Select a framework" />
             <ComboboxContent>
@@ -86,9 +104,14 @@ function RankingSection({ layout = "standalone", details }: Props) {
             layout === "standalone" ? "space-y-2 lg:space-y-6" : "space-y-2"
           }`}
         >
-          {ranks.slice(0, 3).map((rank, index) => {
-            const { name, authorDisplayName, description, contextLength } =
-              rank.model
+          {ranking.slice(0, 3).map((rank, index) => {
+            const {
+              name,
+              authorDisplayName,
+              description,
+              contextLength,
+              image,
+            } = rank.model
 
             return (
               <RankingCard
@@ -96,9 +119,10 @@ function RankingSection({ layout = "standalone", details }: Props) {
                 name={name}
                 description={description}
                 companyName={authorDisplayName}
-                rank={rank.position}
+                rank={index + 1}
                 tokens={contextLength}
                 layoutType={layout}
+                image={image}
               />
             )
           })}
@@ -106,7 +130,7 @@ function RankingSection({ layout = "standalone", details }: Props) {
         <section
           className={`${layout === "standalone" ? "space-y-2" : "space-y-2"}`}
         >
-          {ranks
+          {ranking
             .slice(3, layout === "standalone" ? 10 : 5)
             .map((rank, index) => {
               const { name, authorDisplayName, description, contextLength } =
@@ -118,7 +142,7 @@ function RankingSection({ layout = "standalone", details }: Props) {
                   name={name}
                   description={description}
                   companyName={authorDisplayName}
-                  rank={rank.position}
+                  rank={index + 4}
                   tokens={contextLength}
                   layoutType={layout}
                 />

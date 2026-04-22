@@ -15,7 +15,7 @@ const footerSections = [
       },
       {
         title: "Ranking by Language",
-        href: "/leaderboards/languages",
+        href: "/leaderboards/natural-languages",
       },
       {
         title: "Ranking by Coding Languages",
@@ -177,7 +177,7 @@ const Footer = () => {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 320 512"
                   height="1em"
                   width="1em"
@@ -191,7 +191,7 @@ const Footer = () => {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="1em"
                   width="1em"
@@ -205,7 +205,7 @@ const Footer = () => {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 448 512"
                   height="1em"
                   width="1em"
@@ -219,7 +219,7 @@ const Footer = () => {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 448 512"
                   height="1em"
                   width="1em"

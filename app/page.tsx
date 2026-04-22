@@ -1,93 +1,31 @@
+import { getRankingsByKeyword } from "@/actions/actions"
 import Hero from "@/components/hero/Hero"
 import RankingSection from "@/components/rankings/RankingSection"
 import { Button } from "@/components/ui/button"
-import { LlmModel } from "@/interfaces/LlmModel"
+import {
+  CATEGORIES,
+  NATURAL_LANGUAGES,
+  PROGRAMMING_LANGUAGES,
+} from "@/data/Categories"
 import { Ranking } from "@/interfaces/Ranking"
 import Link from "next/link"
 
-export default function Page() {
-  const model: LlmModel = {
-    author: "anthropic",
-    authorDisplayName: "Anthropic",
-    inputModalities: ["text", "image"],
-    name: "Anthropic: Claude Opus 4.7",
-    outputModalities: ["text"],
-    releaseDate: "2026-04-16T14:51:40.905+00:00",
-    description:
-      "Opus 4.7 is the next generation of Anthropic's Opus family, built for long-running, asynchronous agents. Building on the coding and agentic strengths of Opus 4.6, it delivers stronger performance on complex, multi-step tasks and more reliable agentic execution across extended workflows. It is especially effective for asynchronous agent pipelines where tasks unfold over time - large codebases, multi-stage debugging, and end-to-end project orchestration.\n\nBeyond coding, Opus 4.7 brings improved knowledge work capabilities - from drafting documents and building presentations to analyzing data. It maintains coherence across very long outputs and extended sessions, making it a strong default for tasks that require persistence, judgment, and follow-through.\n\nFor users upgrading from earlier Opus versions, see our [official migration guide here](https://openrouter.ai/docs/guides/evaluate-and-optimize/model-migrations/claude-4-7)\n",
-    slug: "anthropic/claude-opus-4.7",
-    contextLength: 1000000,
-  }
+export default async function Page() {
+  const categoryRankingsRes = await getRankingsByKeyword({
+    typeKeyword: "academia",
+  })
 
-  const tempRanks: Ranking["ranks"] = [
-    {
-      position: 1,
-      model: model,
-    },
-    {
-      position: 2,
-      model: model,
-    },
-    {
-      position: 3,
-      model: model,
-    },
-    {
-      position: 4,
-      model: model,
-    },
-    {
-      position: 5,
-      model: model,
-    },
-    {
-      position: 6,
-      model: model,
-    },
-    {
-      position: 7,
-      model: model,
-    },
-    {
-      position: 8,
-      model: model,
-    },
-    {
-      position: 9,
-      model: model,
-    },
-    {
-      position: 10,
-      model: model,
-    },
-  ]
+  const englishRankingsRes = await getRankingsByKeyword({
+    typeKeyword: "english",
+  })
 
-  const ranking: Ranking = {
-    name: "Best LLMs by Use Case - Instant Rankings",
-    description:
-      "Instant rankings of the best LLMs for coding, science, legal, math, creative writing & 50+ real-world use cases. Find your perfect AI model in seconds.",
-    lastUpdated: "",
-    type: "use-case",
-    ranks: tempRanks,
-  }
+  const javaScriptRankingsRes = await getRankingsByKeyword({
+    typeKeyword: "javascript",
+  })
 
-  const ranking2: Ranking = {
-    name: "LLM Rankings by Language",
-    description:
-      "Real-time rankings of the best LLMs for English, Arabic, Spanish, French, Chinese, Hindi & more. Optimized for fluency, accuracy & cultural nuance.",
-    lastUpdated: "",
-    type: "use-case",
-    ranks: tempRanks,
-  }
-
-  const ranking3: Ranking = {
-    name: "Best LLMs for Programming Languages",
-    description:
-      "Live rankings of the top LLMs for Python, JavaScript, TypeScript, Java, C++, Rust, Go & 15+ languages. Powered by real benchmarks & developer votes.",
-    lastUpdated: "",
-    type: "use-case",
-    ranks: tempRanks,
-  }
+  const categoryRankings: Ranking = JSON.parse(categoryRankingsRes || "{}")
+  const englishRankings: Ranking = JSON.parse(englishRankingsRes || "{}")
+  const javaScriptRankings: Ranking = JSON.parse(javaScriptRankingsRes || "{}")
 
   return (
     <main className="min-h-svh w-full">
@@ -112,11 +50,26 @@ export default function Page() {
         </div>
       </div>
 
-      <RankingSection details={ranking} layout="standalone" />
+      <RankingSection
+        details={categoryRankings}
+        layout="standalone"
+        selectionOptions={CATEGORIES}
+        preSelectedOption="Academia"
+      />
 
       <section className="mx-auto mb-4 grid h-fit max-w-7xl grid-cols-1 gap-4 lg:grid-cols-2">
-        <RankingSection layout="compact" details={ranking2} />
-        <RankingSection layout="compact" details={ranking3} />
+        <RankingSection
+          layout="compact"
+          details={englishRankings}
+          selectionOptions={NATURAL_LANGUAGES}
+          preSelectedOption="English"
+        />
+        <RankingSection
+          layout="compact"
+          details={javaScriptRankings}
+          selectionOptions={PROGRAMMING_LANGUAGES}
+          preSelectedOption="JavaScript"
+        />
       </section>
 
       <section className="my-8 flex w-full items-center justify-center">

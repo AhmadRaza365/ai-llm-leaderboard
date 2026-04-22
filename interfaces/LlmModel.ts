@@ -5,7 +5,8 @@ export interface LlmModel {
   authorDisplayName: string
   contextLength: number
   description: string
-  releaseDate: string
+  releaseDate: Date
   inputModalities: string[]
   outputModalities: string[]
+  image: string
 }
