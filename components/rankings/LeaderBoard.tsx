@@ -34,7 +34,7 @@ function LeaderBoard({
   const sortedRanks = (ranks || []).sort((a, b) => a.position - b.position)
 
   return (
-    <section className="relative mx-auto mb-4 flex h-fit max-w-7xl flex-col rounded-lg border bg-background px-6 py-8 sm:py-10">
+    <section className="relative mx-auto mb-4 flex h-fit max-w-7xl flex-col rounded-lg border bg-background px-4 py-6 sm:py-10 lg:px-6">
       <GlowingEffect
         spread={40}
         glow={true}

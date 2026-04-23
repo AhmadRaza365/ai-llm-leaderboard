@@ -31,7 +31,7 @@ export default async function Page() {
     <main className="min-h-svh w-full">
       <Hero />
 
-      <div className="mx-auto -mt-26 max-w-5xl px-6 pb-10">
+      <div className="mx-auto -mt-26 max-w-5xl px-5 pb-10 lg:px-6">
         <div className="mt-14 grid grid-cols-1 overflow-hidden rounded-2xl border sm:grid-cols-2 md:grid-cols-3">
           <div className="-m-px border-t border-l p-10">
             <span className="font-satoshi text-5xl font-semibold">200+</span>
@@ -49,15 +49,16 @@ export default async function Page() {
           </div>
         </div>
       </div>
+      <section className="w-full px-5 lg:px-0">
+        <RankingSection
+          details={categoryRankings}
+          layout="standalone"
+          selectionOptions={CATEGORIES}
+          preSelectedOption="Academia"
+        />
+      </section>
 
-      <RankingSection
-        details={categoryRankings}
-        layout="standalone"
-        selectionOptions={CATEGORIES}
-        preSelectedOption="Academia"
-      />
-
-      <section className="mx-auto mb-4 grid h-fit max-w-7xl grid-cols-1 gap-4 lg:grid-cols-2">
+      <section className="mx-auto mb-4 grid h-fit max-w-7xl grid-cols-1 gap-4 px-5 lg:grid-cols-2 lg:px-0">
         <RankingSection
           layout="compact"
           details={englishRankings}

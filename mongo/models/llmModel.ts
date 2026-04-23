@@ -1,5 +1,4 @@
 import { LlmModel as ILlmModel } from "@/interfaces/LlmModel"
-// import { Schema, model } from "mongoose"
 import mongoose, { Schema, Model } from "mongoose"
 
 const LlmModelSchema = new Schema<ILlmModel>(
@@ -23,8 +22,6 @@ const LlmModelSchema = new Schema<ILlmModel>(
   },
   { timestamps: true }
 )
-
-// export const LlmModel = model<ILlmModel>("LlmModel", LlmModelSchema)
 
 export const LlmModel: Model<ILlmModel> =
   mongoose.models.LlmModel ||

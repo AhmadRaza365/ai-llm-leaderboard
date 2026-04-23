@@ -33,7 +33,7 @@ function RankingSection({
   const ranking = (ranks || []).sort((a, b) => a.position - b.position)
 
   return (
-    <section className="relative mx-auto mb-4 flex h-full w-full max-w-7xl flex-col rounded-lg border bg-background px-6 py-8 sm:py-10">
+    <section className="relative mx-auto mb-4 flex h-full w-full max-w-7xl flex-col rounded-lg border bg-background px-4 py-8 sm:px-6 sm:py-10">
       <GlowingEffect
         spread={40}
         glow={true}
@@ -101,7 +101,7 @@ function RankingSection({
       >
         <section
           className={`${
-            layout === "standalone" ? "space-y-2 lg:space-y-6" : "space-y-2"
+            layout === "standalone" ? "space-y-3 lg:space-y-6" : "space-y-3"
           }`}
         >
           {ranking.slice(0, 3).map((rank, index) => {
@@ -128,7 +128,7 @@ function RankingSection({
           })}
         </section>
         <section
-          className={`${layout === "standalone" ? "space-y-2" : "space-y-2"}`}
+          className={`${layout === "standalone" ? "space-y-3" : "space-y-3"}`}
         >
           {ranking
             .slice(3, layout === "standalone" ? 10 : 5)

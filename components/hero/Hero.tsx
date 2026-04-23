@@ -36,7 +36,7 @@ export default function Hero() {
           English, Python, JavaScript & 50+ specialized categories. Transparent,
           unbiased, updated daily.
         </p>
-        <div className="mt-12 flex items-center justify-center gap-4">
+        <div className="mt-12 flex flex-col items-center justify-center gap-4 lg:flex-row">
           <Link href="/leaderboards">
             <Button className="cursor-pointer rounded-full text-base" size="lg">
               Browse All Leaderboards <ArrowUpRight className="h-5! w-5!" />

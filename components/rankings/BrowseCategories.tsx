@@ -16,7 +16,7 @@ type Props = {
 
 function BrowseCategories({ categories }: Props) {
   return (
-    <section className="mx-auto grid h-fit max-w-7xl grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-136 xl:grid-rows-2">
+    <section className="mx-auto grid h-fit max-w-7xl grid-cols-1 grid-rows-none gap-4 px-5 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-136 xl:grid-rows-2">
       {categories.map((category, index) => {
         const { description, area, icon, link, title } = category
         return (

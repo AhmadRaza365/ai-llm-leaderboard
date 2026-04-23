@@ -24,7 +24,7 @@ async function UseCaseLeaderBoard({
   const ranking: Ranking = JSON.parse(rankingsRes || "{}")
 
   return (
-    <main className="mt-20 min-h-svh py-16">
+    <main className="mt-20 min-h-svh px-5 py-10 lg:py-16">
       <LeaderBoard
         ranking={ranking}
         preSelectedOption={optionName}
