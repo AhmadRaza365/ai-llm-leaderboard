@@ -5,8 +5,42 @@ import {
   NATURAL_LANGUAGES,
   PROGRAMMING_LANGUAGES,
 } from "@/data/Categories"
+import { SITE_DATA } from "@/data/SiteData"
 import { Ranking } from "@/interfaces/Ranking"
 import { getLeaderboardType } from "@/lib/mappedLeaderboardType"
+import { Metadata } from "next"
+
+type Props = {
+  params: Promise<{ type: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const type = (await params).type
+
+  return {
+    title: `${type}`,
+    robots: "index, follow",
+    openGraph: {
+      // images: product.images[0],
+      type: "website",
+      title: `${type}`,
+      siteName: SITE_DATA.name,
+      locale: "en_US",
+      description: SITE_DATA.description,
+      url: `${SITE_DATA.siteURL}/leaderboards/${type}`,
+    },
+    twitter: {
+      card: "summary",
+      creator: SITE_DATA.author,
+      title: `${type}`,
+      description: SITE_DATA.description,
+      creatorId: SITE_DATA.socialHandle,
+      // images: product.images[0],
+      site: SITE_DATA.name,
+    },
+  }
+}
 
 async function UseCaseLeaderBoard({
   params,

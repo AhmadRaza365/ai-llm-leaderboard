@@ -1,5 +1,35 @@
 import BrowseCategories from "@/components/rankings/BrowseCategories"
+import { SITE_DATA } from "@/data/SiteData"
 import { Box, Sparkles, Languages, Code, Globe } from "lucide-react"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title:
+    "LLM Leaderboards 2026 | Browse All AI Model Rankings by Use Case, Language & More",
+  description:
+    "Explore all LLM leaderboards in one place. Real-time rankings by use case (coding, science, legal), language (Arabic, English), programming languages (Python, JavaScript), top usage, new models & general performance. Updated daily.",
+  robots: "index, follow",
+  openGraph: {
+    images: "/images/leaderboards-social-image.jpg",
+    type: "website",
+    title: `LLM Leaderboards 2026 | Browse All AI Model Rankings by Use Case, Language & More`,
+    siteName: SITE_DATA.name,
+    locale: "en_US",
+    description:
+      "Explore all LLM leaderboards in one place. Real-time rankings by use case (coding, science, legal), language (Arabic, English), programming languages (Python, JavaScript), top usage, new models & general performance. Updated daily.",
+    url: `${SITE_DATA.siteURL}/leaderboards`,
+  },
+  twitter: {
+    card: "summary",
+    creator: SITE_DATA.author,
+    title: `LLM Leaderboards 2026 | Browse All AI Model Rankings by Use Case, Language & More`,
+    description:
+      "Explore all LLM leaderboards in one place. Real-time rankings by use case (coding, science, legal), language (Arabic, English), programming languages (Python, JavaScript), top usage, new models & general performance. Updated daily.",
+    creatorId: SITE_DATA.socialHandle,
+    images: "/images/leaderboards-social-image.jpg",
+    site: SITE_DATA.name,
+  },
+}
 
 function LeaderBoardsPage() {
   const leaderBoards = [

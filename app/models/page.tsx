@@ -10,6 +10,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import { SITE_DATA } from "@/data/SiteData"
 import { LlmModelsListResponse } from "@/interfaces/Response"
 import { getValidPositiveNumber } from "@/lib/formatNumber"
 import {
@@ -18,11 +19,40 @@ import {
   getSearchParamValue,
 } from "@/lib/pagination"
 import { ArrowUpRight } from "lucide-react"
+import { Metadata } from "next"
 import Link from "next/link"
 
 type SearchParams = Promise<{
   [key: string]: string | string[] | undefined
 }>
+
+export const metadata: Metadata = {
+  title:
+    "All LLM Models 2026 | Browse 200+ AI Models with Rankings & Benchmarks",
+  description:
+    "Browse and compare 200+ top AI LLM models. Search, filter, and discover the best models with real-time rankings, scores, and benchmarks for coding, Arabic, legal, science, Python and more. Updated daily.",
+  robots: "index, follow",
+  openGraph: {
+    images: "/images/models-social-image.jpg",
+    type: "website",
+    title: `All LLM Models 2026 | Browse 200+ AI Models with Rankings & Benchmarks`,
+    siteName: SITE_DATA.name,
+    locale: "en_US",
+    description:
+      "Browse and compare 200+ top AI LLM models. Search, filter, and discover the best models with real-time rankings, scores, and benchmarks for coding, Arabic, legal, science, Python and more. Updated daily.",
+    url: `${SITE_DATA.siteURL}/models`,
+  },
+  twitter: {
+    card: "summary",
+    creator: SITE_DATA.author,
+    title: `All LLM Models 2026 | Browse 200+ AI Models with Rankings & Benchmarks`,
+    description:
+      "Browse and compare 200+ top AI LLM models. Search, filter, and discover the best models with real-time rankings, scores, and benchmarks for coding, Arabic, legal, science, Python and more. Updated daily.",
+    creatorId: SITE_DATA.socialHandle,
+    images: "/images/models-social-image.jpg",
+    site: SITE_DATA.name,
+  },
+}
 
 async function ModelsPage({ searchParams }: { searchParams: SearchParams }) {
   const resolvedSearchParams = await searchParams
