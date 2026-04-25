@@ -34,7 +34,7 @@ export default async function Page() {
       <div className="mx-auto -mt-26 max-w-5xl px-5 pb-10 lg:px-6">
         <div className="mt-14 grid grid-cols-1 overflow-hidden rounded-2xl border sm:grid-cols-2 md:grid-cols-3">
           <div className="-m-px border-t border-l p-10">
-            <span className="font-satoshi text-5xl font-semibold">200+</span>
+            <span className="font-satoshi text-5xl font-semibold">500+</span>
             <p className="mt-4 text-xl text-foreground/80">LLM Models</p>
           </div>
           <div className="-m-px border-t border-l p-10">

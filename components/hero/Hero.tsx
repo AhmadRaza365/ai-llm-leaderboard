@@ -24,7 +24,7 @@ export default function Hero() {
           variant="secondary"
         >
           <Link href="/models">
-            200+ Models • 50+ Categories{" "}
+            500+ Models • 50+ Categories{" "}
             <ArrowUpRight className="ml-1 size-4" />
           </Link>
         </Badge>

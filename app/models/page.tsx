@@ -1,19 +1,60 @@
 import { getLlmModelsList } from "@/actions/actions"
-import LlmModelCard from "@/components/models/LlmModelCard"
+import LlmModelCard from "@/components/model/LlmModelCard"
 import { Button } from "@/components/ui/button"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
 import { LlmModelsListResponse } from "@/interfaces/Response"
+import { getValidPositiveNumber } from "@/lib/formatNumber"
+import {
+  buildPageHref,
+  getPageNumbers,
+  getSearchParamValue,
+} from "@/lib/pagination"
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
-async function ModelsPage() {
+type SearchParams = Promise<{
+  [key: string]: string | string[] | undefined
+}>
+
+async function ModelsPage({ searchParams }: { searchParams: SearchParams }) {
+  const resolvedSearchParams = await searchParams
+  const pageNumber = getValidPositiveNumber(
+    getSearchParamValue(resolvedSearchParams.pageNumber),
+    1
+  )
+  const pageSize = getValidPositiveNumber(
+    getSearchParamValue(resolvedSearchParams.pageSize),
+    30
+  )
+  const currentParams = {
+    pageSize: String(pageSize),
+  }
+
   const res = await getLlmModelsList({
-    limit: 20,
-    page: 1,
+    limit: pageSize,
+    page: pageNumber,
   })
 
   const response: LlmModelsListResponse = JSON.parse(res || "{}")
-
   const models = response.data || []
+  const pagination = response.pagination || {
+    total: 0,
+    currentPage: 1,
+    totalPages: 1,
+    hasNextPage: false,
+    hasPrevPage: false,
+  }
+  const { totalPages, currentPage, hasNextPage, hasPrevPage, total } =
+    pagination
+  const pages = getPageNumbers(currentPage, Math.max(totalPages, 1))
 
   return (
     <main className="mt-20 min-h-svh py-16">
@@ -25,7 +66,7 @@ async function ModelsPage() {
           </span>
         </h1>
         <p className="mt-6 text-center text-xl tracking-normal text-balance text-muted-foreground sm:text-2xl sm:leading-normal md:text-3xl">
-          Discover and compare 200+ large language models with real-time
+          Discover and compare 500+ large language models with real-time
           rankings, benchmarks, and community votes.
         </p>
         <div className="mx-auto mt-10 flex w-full max-w-xs flex-col items-center justify-center gap-4 sm:flex-row">
@@ -41,6 +82,72 @@ async function ModelsPage() {
         {models.map((model, index) => {
           return <LlmModelCard key={index} details={model} />
         })}
+
+        <section className="col-span-full mt-4 space-y-4">
+          <p className="text-center text-sm text-muted-foreground">
+            Showing page {currentPage} of {Math.max(totalPages, 1)} with {total}{" "}
+            models total
+          </p>
+
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href={buildPageHref({
+                    currentParams,
+                    pageNumber: hasPrevPage ? currentPage - 1 : currentPage,
+                    basePage: "/models",
+                  })}
+                  className={
+                    !hasPrevPage ? "pointer-events-none opacity-50" : undefined
+                  }
+                  aria-disabled={!hasPrevPage}
+                  tabIndex={!hasPrevPage ? -1 : undefined}
+                />
+              </PaginationItem>
+
+              {pages.map((page, index) => {
+                if (page === "ellipsis") {
+                  return (
+                    <PaginationItem key={`ellipsis-${index}`}>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                  )
+                }
+
+                return (
+                  <PaginationItem key={page}>
+                    <PaginationLink
+                      href={buildPageHref({
+                        currentParams,
+                        pageNumber: page,
+                        basePage: "/models",
+                      })}
+                      isActive={page === currentPage}
+                    >
+                      {page}
+                    </PaginationLink>
+                  </PaginationItem>
+                )
+              })}
+
+              <PaginationItem>
+                <PaginationNext
+                  href={buildPageHref({
+                    currentParams,
+                    pageNumber: hasNextPage ? currentPage + 1 : currentPage,
+                    basePage: "/models",
+                  })}
+                  className={
+                    !hasNextPage ? "pointer-events-none opacity-50" : undefined
+                  }
+                  aria-disabled={!hasNextPage}
+                  tabIndex={!hasNextPage ? -1 : undefined}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </section>
       </section>
     </main>
   )

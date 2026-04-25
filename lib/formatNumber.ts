@@ -24,3 +24,16 @@ export function formatNumberToShortScaleNotation(
 
   return value.toString()
 }
+
+export function getValidPositiveNumber(
+  value: string | undefined,
+  fallback: number
+) {
+  const parsedValue = Number.parseInt(value || "", 10)
+
+  if (Number.isNaN(parsedValue) || parsedValue < 1) {
+    return fallback
+  }
+
+  return parsedValue
+}

@@ -19,7 +19,7 @@ function LlmModelCard({ details }: Props) {
   } = details
 
   return (
-    <section className="relative flex h-full w-full flex-col gap-3 rounded-lg border px-5 py-7 shadow">
+    <section className="relative flex h-full w-full flex-col gap-2 rounded-lg border px-5 py-7 shadow lg:gap-3">
       <GlowingEffect
         spread={40}
         glow={true}
@@ -28,7 +28,7 @@ function LlmModelCard({ details }: Props) {
         inactiveZone={0.01}
       />
 
-      <div className="relative h-20 w-20 overflow-hidden rounded-lg">
+      <div className="relative h-14 w-14 overflow-hidden rounded-lg lg:h-20 lg:w-20">
         <Image
           src={image || "/images/icons/anthropic.jpg"}
           alt={name}
@@ -38,13 +38,14 @@ function LlmModelCard({ details }: Props) {
         />
       </div>
 
-      <h3 className="mt-2 text-2xl font-medium">{name}</h3>
-      <p className="text-base">By {authorDisplayName}</p>
-      <p className="line-clamp-5 text-base">{description}</p>
+      <h3 className="mt-2 text-xl font-medium lg:text-2xl">{name}</h3>
+      <p className="text-sm lg:text-base">By {authorDisplayName}</p>
+      <p className="line-clamp-5 text-sm lg:text-base">{description}</p>
+
       <section className="mt-auto flex divide-x">
         <div className="flex grow flex-col items-center gap-1.5 py-1">
-          <p className="text-sm font-semibold">Release Date</p>
-          <p className="text-sm">
+          <p className="text-xs font-semibold lg:text-sm">Release Date</p>
+          <p className="text-xs lg:text-sm">
             {formatDate({
               format: "DD MMM YYYY",
               unformatedDate: releaseDate,
@@ -53,12 +54,18 @@ function LlmModelCard({ details }: Props) {
         </div>
 
         <div className="flex grow flex-col items-center gap-1.5 py-1">
-          <p className="text-sm font-semibold">Context Size</p>
-          <p className="text-sm">
+          <p className="text-xs font-semibold lg:text-sm">Context Size</p>
+          <p className="text-xs lg:text-sm">
             {formatNumberToShortScaleNotation(contextLength)}
           </p>
         </div>
       </section>
+
+      {/* <Link className="absolute inset-0" href={`/models/${slug}`}>
+        <span className="sr-only">
+          View Details
+        </span>
+      </Link> */}
     </section>
   )
 }

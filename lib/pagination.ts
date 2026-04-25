@@ -1,0 +1,62 @@
+export type PaginationPageItem = number | "ellipsis"
+
+export function buildPageHref({
+  currentParams,
+  pageNumber,
+  basePage,
+}: {
+  currentParams: Record<string, string | undefined>
+  pageNumber: number
+  basePage: string
+}) {
+  const params = new URLSearchParams()
+
+  Object.entries(currentParams).forEach(([key, value]) => {
+    if (value) {
+      params.set(key, value)
+    }
+  })
+
+  params.set("pageNumber", String(pageNumber))
+
+  return `${basePage}?${params.toString()}`
+}
+
+export function getPageNumbers(
+  currentPage: number,
+  totalPages: number
+): PaginationPageItem[] {
+  if (totalPages <= 7) {
+    return Array.from({ length: totalPages }, (_, index) => index + 1)
+  }
+
+  if (currentPage <= 3) {
+    return [1, 2, 3, 4, 5, "ellipsis", totalPages]
+  }
+
+  if (currentPage >= totalPages - 2) {
+    return [
+      1,
+      "ellipsis",
+      totalPages - 4,
+      totalPages - 3,
+      totalPages - 2,
+      totalPages - 1,
+      totalPages,
+    ]
+  }
+
+  return [
+    1,
+    "ellipsis",
+    currentPage - 1,
+    currentPage,
+    currentPage + 1,
+    "ellipsis",
+    totalPages,
+  ]
+}
+
+export function getSearchParamValue(param: string | string[] | undefined) {
+  return Array.isArray(param) ? param[0] : param
+}
