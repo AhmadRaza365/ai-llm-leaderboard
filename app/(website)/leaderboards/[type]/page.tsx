@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: title,
     robots: "index, follow",
     openGraph: {
-      // images: `/images/${type}-leaderboard-social-image.jpg`,
+      images: `/images/${type}-leaderboard-social-image.jpg`,
       type: "website",
       title: title,
       siteName: SITE_DATA.name,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: title,
       description: description,
       creatorId: SITE_DATA.socialHandle,
-      // images: `/images/${type}-leaderboard-social-image.jpg`,
+      images: `/images/${type}-leaderboard-social-image.jpg`,
       site: SITE_DATA.name,
     },
   }
