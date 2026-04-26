@@ -7,6 +7,7 @@ import {
 } from "@/data/Categories"
 import { SITE_DATA } from "@/data/SiteData"
 import { Ranking } from "@/interfaces/Ranking"
+import { getMetaDataForPageBySlug } from "@/lib/getMetaDataForSubPages"
 import { getLeaderboardType } from "@/lib/mappedLeaderboardType"
 import { Metadata } from "next"
 
@@ -18,25 +19,28 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const type = (await params).type
 
+  const { meta } = getMetaDataForPageBySlug(type)
+  const { title, description } = meta
+
   return {
-    title: `${type}`,
+    title: title,
     robots: "index, follow",
     openGraph: {
-      // images: product.images[0],
+      // images: `/images/${type}-leaderboard-social-image.jpg`,
       type: "website",
-      title: `${type}`,
+      title: title,
       siteName: SITE_DATA.name,
       locale: "en_US",
-      description: SITE_DATA.description,
+      description: description,
       url: `${SITE_DATA.siteURL}/leaderboards/${type}`,
     },
     twitter: {
       card: "summary",
       creator: SITE_DATA.author,
-      title: `${type}`,
-      description: SITE_DATA.description,
+      title: title,
+      description: description,
       creatorId: SITE_DATA.socialHandle,
-      // images: product.images[0],
+      // images: `/images/${type}-leaderboard-social-image.jpg`,
       site: SITE_DATA.name,
     },
   }
@@ -48,7 +52,6 @@ async function UseCaseLeaderBoard({
   params: Promise<{ type: string }>
 }) {
   const { type } = await params
-
   const { keyword, boardType, optionName } = getLeaderboardType(type)
 
   const rankingsRes = await getRankingsByKeyword({

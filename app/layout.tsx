@@ -2,8 +2,6 @@ import "./globals.css"
 import { Geist_Mono, IBM_Plex_Sans, Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
-import Navbar from "@/components/navbar/navbar"
-import Footer from "@/components/Footer"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Metadata } from "next"
 import { SITE_DATA } from "@/data/SiteData"
@@ -72,11 +70,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <TooltipProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </TooltipProvider>
+          <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
     </html>
