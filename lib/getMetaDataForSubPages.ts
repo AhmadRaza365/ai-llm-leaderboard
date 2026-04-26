@@ -93,8 +93,7 @@ export const PagesMetaData = {
 
   programming: {
     meta: {
-      title:
-        "Best LLMs for Programming & Coding 2026 | AI Coding Leaderboard",
+      title: "Best LLMs for Programming & Coding 2026 | AI Coding Leaderboard",
       description:
         "Real-time ranking of the best LLMs for coding, software development, debugging, and programming in Python, JavaScript, and more.",
       metaImage: {
@@ -138,8 +137,7 @@ export const PagesMetaData = {
   },
   seo: {
     meta: {
-      title:
-        "Best LLMs for SEO 2026 | AI SEO Writing & Optimization Rankings",
+      title: "Best LLMs for SEO 2026 | AI SEO Writing & Optimization Rankings",
       description:
         "Top LLMs for SEO content writing, keyword research, meta optimization, and search engine performance. Real-time SEO leaderboard.",
       metaImage: {
@@ -261,8 +259,7 @@ export const PagesMetaData = {
 
   belarusian: {
     meta: {
-      title:
-        "Best LLMs for Belarusian 2026 | Belarusian Language AI Rankings",
+      title: "Best LLMs for Belarusian 2026 | Belarusian Language AI Rankings",
       description: "Top LLMs for Belarusian language tasks and performance.",
       metaImage: {
         heading: "Best LLMs for Belarusian",
@@ -300,14 +297,12 @@ export const PagesMetaData = {
       },
     },
     heading: "Best LLMs for Bosnian",
-    description:
-      "Discover the top AI models for Bosnian language performance.",
+    description: "Discover the top AI models for Bosnian language performance.",
   },
 
   bulgarian: {
     meta: {
-      title:
-        "Best LLMs for Bulgarian 2026 | Bulgarian Language AI Leaderboard",
+      title: "Best LLMs for Bulgarian 2026 | Bulgarian Language AI Leaderboard",
       description:
         "Top performing LLMs for Bulgarian language tasks and accuracy.",
       metaImage: {
@@ -336,8 +331,7 @@ export const PagesMetaData = {
 
   cantonese: {
     meta: {
-      title:
-        "Best LLMs for Cantonese 2026 | Cantonese Language AI Leaderboard",
+      title: "Best LLMs for Cantonese 2026 | Cantonese Language AI Leaderboard",
       description:
         "Top LLMs for Cantonese language including spoken and written performance.",
       metaImage: {
@@ -353,8 +347,7 @@ export const PagesMetaData = {
   catalan: {
     meta: {
       title: "Best LLMs for Catalan 2026 | Catalan Language AI Rankings",
-      description:
-        "Real-time rankings of the best LLMs for Catalan language.",
+      description: "Real-time rankings of the best LLMs for Catalan language.",
       metaImage: {
         heading: "Best LLMs for Catalan",
         subHeading: "Catalan Language Performance",
@@ -486,8 +479,7 @@ export const PagesMetaData = {
   finnish: {
     meta: {
       title: "Best LLMs for Finnish 2026 | Finnish Language AI Rankings",
-      description:
-        "Real-time rankings of the best LLMs for Finnish language.",
+      description: "Real-time rankings of the best LLMs for Finnish language.",
       metaImage: {
         heading: "Best LLMs for Finnish",
         subHeading: "Finnish Language Performance",
@@ -603,8 +595,7 @@ export const PagesMetaData = {
 
   icelandic: {
     meta: {
-      title:
-        "Best LLMs for Icelandic 2026 | Icelandic Language AI Leaderboard",
+      title: "Best LLMs for Icelandic 2026 | Icelandic Language AI Leaderboard",
       description: "Top LLMs for Icelandic language tasks and performance.",
       metaImage: {
         heading: "Best LLMs for Icelandic",
@@ -612,14 +603,12 @@ export const PagesMetaData = {
       },
     },
     heading: "Best LLMs for Icelandic",
-    description:
-      "Discover the best AI models for Icelandic language support.",
+    description: "Discover the best AI models for Icelandic language support.",
   },
 
   indonesian: {
     meta: {
-      title:
-        "Best LLMs for Indonesian 2026 | Indonesian Language AI Rankings",
+      title: "Best LLMs for Indonesian 2026 | Indonesian Language AI Rankings",
       description:
         "Real-time leaderboard of the best LLMs for Indonesian (Bahasa Indonesia).",
       metaImage: {
@@ -665,8 +654,7 @@ export const PagesMetaData = {
   kannada: {
     meta: {
       title: "Best LLMs for Kannada 2026 | Kannada Language AI Leaderboard",
-      description:
-        "Real-time rankings of the best LLMs for Kannada language.",
+      description: "Real-time rankings of the best LLMs for Kannada language.",
       metaImage: {
         heading: "Best LLMs for Kannada",
         subHeading: "Kannada Language Performance",
@@ -709,8 +697,7 @@ export const PagesMetaData = {
 
   lithuanian: {
     meta: {
-      title:
-        "Best LLMs for Lithuanian 2026 | Lithuanian Language AI Rankings",
+      title: "Best LLMs for Lithuanian 2026 | Lithuanian Language AI Rankings",
       description: "Top LLMs for Lithuanian language performance.",
       metaImage: {
         heading: "Best LLMs for Lithuanian",
@@ -782,8 +769,7 @@ export const PagesMetaData = {
 
   portuguese: {
     meta: {
-      title:
-        "Best LLMs for Portuguese 2026 | Portuguese Language AI Rankings",
+      title: "Best LLMs for Portuguese 2026 | Portuguese Language AI Rankings",
       description:
         "Real-time leaderboard for the best LLMs supporting Portuguese (Brazilian & European).",
       metaImage: {
@@ -813,8 +799,7 @@ export const PagesMetaData = {
   romanian: {
     meta: {
       title: "Best LLMs for Romanian 2026 | Romanian Language AI Rankings",
-      description:
-        "Real-time rankings of the best LLMs for Romanian language.",
+      description: "Real-time rankings of the best LLMs for Romanian language.",
       metaImage: {
         heading: "Best LLMs for Romanian",
         subHeading: "Romanian Language Performance",
@@ -929,8 +914,7 @@ export const PagesMetaData = {
   },
   "programming-languages": {
     meta: {
-      title:
-        "Best LLMs for Programming Languages 2026 | AI Coding Leaderboard",
+      title: "Best LLMs for Programming Languages 2026 | AI Coding Leaderboard",
       description:
         "Real-time LLM rankings for different programming languages. Find the best AI models for Python, JavaScript, Java, Rust, Go, C++, TypeScript and more.",
       metaImage: {
@@ -960,8 +944,7 @@ export const PagesMetaData = {
 
   javascript: {
     meta: {
-      title:
-        "Best LLMs for JavaScript 2026 | JavaScript AI Coding Leaderboard",
+      title: "Best LLMs for JavaScript 2026 | JavaScript AI Coding Leaderboard",
       description:
         "Real-time rankings of the best LLMs for JavaScript and frontend/backend development. Compare AI performance in modern JS frameworks.",
       metaImage: {
@@ -1140,8 +1123,7 @@ export const PagesMetaData = {
   },
   "top-usage": {
     meta: {
-      title:
-        "Top Used LLMs 2026 | Most Popular AI Models by Real-World Usage",
+      title: "Top Used LLMs 2026 | Most Popular AI Models by Real-World Usage",
       description:
         "Discover the most widely used LLM models in 2026. Real-time ranking based on actual adoption, developer usage, traffic, and community popularity.",
       metaImage: {

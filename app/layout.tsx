@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Metadata } from "next"
 import { SITE_DATA } from "@/data/SiteData"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 const interHeading = Inter({ subsets: ["latin"], variable: "--font-heading" })
 
@@ -71,6 +72,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <TooltipProvider>{children}</TooltipProvider>
+          <GoogleAnalytics gaId="G-7ML40N8CS4" />
         </ThemeProvider>
       </body>
     </html>
