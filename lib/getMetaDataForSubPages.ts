@@ -1031,8 +1031,36 @@ export const PagesMetaData = {
     description:
       "Find the strongest AI models for modern C++, game engines, embedded systems, and high-performance applications.",
   },
+  "c++": {
+    meta: {
+      title: "Best LLMs for C++ 2026 | C++ AI Coding Leaderboard",
+      description:
+        "Top LLMs for C++ development including performance optimization, game development, and systems programming.",
+      metaImage: {
+        heading: "Best LLMs for C++",
+        subHeading: "C++ Performance",
+      },
+    },
+    heading: "Best LLMs for C++",
+    description:
+      "Find the strongest AI models for modern C++, game engines, embedded systems, and high-performance applications.",
+  },
 
   csharp: {
+    meta: {
+      title: "Best LLMs for C# 2026 | C# .NET AI Leaderboard",
+      description:
+        "Real-time rankings of the best LLMs for C# and .NET development, Unity game development, and enterprise software.",
+      metaImage: {
+        heading: "Best LLMs for C#",
+        subHeading: "C# & .NET Development",
+      },
+    },
+    heading: "Best LLMs for C#",
+    description:
+      "Discover the best AI coding assistants for C#, ASP.NET, Unity, and Windows application development.",
+  },
+  "c#": {
     meta: {
       title: "Best LLMs for C# 2026 | C# .NET AI Leaderboard",
       description:
@@ -1135,8 +1163,22 @@ export const PagesMetaData = {
     description:
       "See which AI models are being used the most in real-world applications. Rankings based on adoption rate, developer preference, API calls, and community engagement.",
   },
+  general: {
+    meta: {
+      title: "Top Used LLMs 2026 | Most Popular AI Models by Real-World Usage",
+      description:
+        "Discover the most widely used LLM models in 2026. Real-time ranking based on actual adoption, developer usage, traffic, and community popularity.",
+      metaImage: {
+        heading: "Top Used LLMs",
+        subHeading: "Most Popular AI Models by Usage 2026",
+      },
+    },
+    heading: "Ranking by Top Usage",
+    description:
+      "See which AI models are being used the most in real-world applications. Rankings based on adoption rate, developer preference, API calls, and community engagement.",
+  },
 }
 
 export const getMetaDataForPageBySlug = (slug: string) => {
-  return PagesMetaData[slug as keyof typeof PagesMetaData] || null
+  return PagesMetaData[slug.toLowerCase() as keyof typeof PagesMetaData] || null
 }

@@ -19,6 +19,8 @@ function LeaderBoard({
   preSelectedOption,
   selectionOptions,
   hideOptions = false,
+  description,
+  title,
 }: {
   ranking: Ranking
   selectionOptions: {
@@ -27,8 +29,10 @@ function LeaderBoard({
   }[]
   preSelectedOption: string
   hideOptions?: boolean
+  title: string
+  description: string
 }) {
-  const { name, description, ranks } = ranking
+  const { ranks, name, description: rankingDescription } = ranking
   const router = useRouter()
 
   const sortedRanks = (ranks || []).sort((a, b) => a.position - b.position)
@@ -46,10 +50,10 @@ function LeaderBoard({
       <section className="flex flex-col items-start justify-between gap-4 lg:flex-row">
         <section className={`max-w-xl`}>
           <h1 className={`text-2xl font-bold tracking-tight sm:text-3xl`}>
-            {name}
+            {title || name}
           </h1>
           <p className={`mt-3.5 text-base text-pretty text-muted-foreground`}>
-            {description}
+            {description || rankingDescription}
           </p>
         </section>
         {!hideOptions && (
@@ -88,8 +92,13 @@ function LeaderBoard({
       >
         <section className={`space-y-2 lg:space-y-6`}>
           {sortedRanks.slice(0, 3).map((rank, index) => {
-            const { name, authorDisplayName, description, contextLength } =
-              rank.model
+            const {
+              name,
+              authorDisplayName,
+              description,
+              contextLength,
+              image,
+            } = rank.model
 
             return (
               <RankingCard
@@ -100,14 +109,20 @@ function LeaderBoard({
                 rank={index + 1}
                 tokens={contextLength}
                 layoutType="standalone"
+                image={image}
               />
             )
           })}
         </section>
         <section className={`space-y-2`}>
           {sortedRanks.slice(3, 10).map((rank, index) => {
-            const { name, authorDisplayName, description, contextLength } =
-              rank.model
+            const {
+              name,
+              authorDisplayName,
+              description,
+              contextLength,
+              image,
+            } = rank.model
 
             return (
               <RankingCard
@@ -118,6 +133,7 @@ function LeaderBoard({
                 rank={index + 4}
                 tokens={contextLength}
                 layoutType="standalone"
+                image={image}
               />
             )
           })}

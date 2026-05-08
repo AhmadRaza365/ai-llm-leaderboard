@@ -12,7 +12,7 @@ import Link from "next/link"
 
 export default async function Page() {
   const categoryRankingsRes = await getRankingsByKeyword({
-    typeKeyword: "academia",
+    typeKeyword: "programming",
   })
 
   const englishRankingsRes = await getRankingsByKeyword({
@@ -54,7 +54,9 @@ export default async function Page() {
           details={categoryRankings}
           layout="standalone"
           selectionOptions={CATEGORIES}
-          preSelectedOption="Academia"
+          preSelectedOption="Programming"
+          title="Best LLMs by Use Case"
+          description="Find the perfect AI model for your specific need. Compare top LLMs across Coding, Legal, Marketing, Science, SEO, and many other professional use cases."
         />
       </section>
 
@@ -64,12 +66,16 @@ export default async function Page() {
           details={englishRankings}
           selectionOptions={NATURAL_LANGUAGES}
           preSelectedOption="English"
+          title="Best LLMs by Natural Language"
+          description="Which AI performs best in your language? Compare top LLMs for English, Arabic, Hindi, Chinese, French, Spanish and many other languages."
         />
         <RankingSection
           layout="compact"
           details={javaScriptRankings}
           selectionOptions={PROGRAMMING_LANGUAGES}
           preSelectedOption="JavaScript"
+          title="Best LLMs for Programming Languages"
+          description="See which AI models write the best code. Leaderboard rankings for JavaScript, Python, TypeScript, Java, Rust, Go, C#, and other languages."
         />
       </section>
 

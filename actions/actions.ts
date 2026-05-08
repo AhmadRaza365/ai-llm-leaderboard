@@ -16,13 +16,16 @@ export async function getRankingsByKeyword({
   }
 
   const cleanType = typeKeyword.trim().toLowerCase()
+  const escapedType = cleanType.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
 
   try {
     console.log(`fetching latest ranking for: ${cleanType}...`)
 
     await connectMongo()
 
-    const latestRanking = await RankingModel.findOne({ type: cleanType })
+    const latestRanking = await RankingModel.findOne({
+      type: new RegExp(`^${escapedType}$`, "i"),
+    })
       .sort({ createdAt: -1 })
       .populate({
         path: "ranks.model",
@@ -42,7 +45,7 @@ export async function getRankingsByKeyword({
       description: latestRanking?.description || "",
       lastUpdated: latestRanking?.lastUpdated || new Date(),
       ranks: latestRanking?.ranks || [],
-      type: latestRanking?.type || "",
+      type: cleanType,
     }
 
     return JSON.stringify(ranking)
@@ -60,19 +63,25 @@ export async function getLlmModelsList({
   limit: number
 }) {
   const skip = (page - 1) * limit
+  const excludedDescriptionPattern =
+    /that always resolves to the latest Instant chat/i
 
   try {
     console.log(`fetching Llm models...`)
 
     await connectMongo()
 
-    const models = await LlmModel.find()
-      .sort({ createdAt: -1 })
+    const models = await LlmModel.find({
+      description: { $not: excludedDescriptionPattern },
+    })
+      .sort({ releaseDate: -1 })
       .skip(skip)
       .limit(limit)
       .exec()
 
-    const totalModels = await LlmModel.countDocuments()
+    const totalModels = await LlmModel.countDocuments({
+      description: { $not: excludedDescriptionPattern },
+    })
 
     const response: LlmModelsListResponse = {
       data: models,

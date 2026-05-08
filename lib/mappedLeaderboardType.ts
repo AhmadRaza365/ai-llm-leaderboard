@@ -31,7 +31,7 @@ export const getLeaderboardType = (slug: string) => {
     }
   }
 
-  if (formattedSlug === "top-usage") {
+  if (formattedSlug === "top-usage" || formattedSlug === "general") {
     return {
       boardType: "top-usage",
       keyword: "top-usage",
@@ -39,7 +39,9 @@ export const getLeaderboardType = (slug: string) => {
     }
   }
 
-  const categoryOption = CATEGORIES.find((cat) => cat.slug === formattedSlug)
+  const categoryOption = CATEGORIES.find(
+    (cat) => cat.slug.toLowerCase() === formattedSlug
+  )
 
   if (categoryOption) {
     return {
@@ -49,7 +51,7 @@ export const getLeaderboardType = (slug: string) => {
     }
   }
   const naturalLanguage = NATURAL_LANGUAGES.find(
-    (cat) => cat.slug === formattedSlug
+    (cat) => cat.slug.toLowerCase() === formattedSlug
   )
 
   if (naturalLanguage) {
@@ -60,7 +62,7 @@ export const getLeaderboardType = (slug: string) => {
     }
   }
   const programmingLanguage = PROGRAMMING_LANGUAGES.find(
-    (cat) => cat.slug === formattedSlug
+    (cat) => cat.slug.toLowerCase() === formattedSlug
   )
 
   if (programmingLanguage) {

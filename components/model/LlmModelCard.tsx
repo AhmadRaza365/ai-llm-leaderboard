@@ -30,7 +30,11 @@ function LlmModelCard({ details }: Props) {
 
       <div className="relative h-14 w-14 overflow-hidden rounded-lg lg:h-20 lg:w-20">
         <Image
-          src={image || "/images/icons/anthropic.jpg"}
+          src={
+            image
+              ? `${process.env.NEXT_PUBLIC_S3_CDN}/${image}`
+              : "/images/icons/ai-model.jpg"
+          }
           alt={name}
           width={100}
           height={100}

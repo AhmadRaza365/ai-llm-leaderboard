@@ -19,7 +19,8 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const type = (await params).type
 
-  const { meta } = getMetaDataForPageBySlug(type)
+  const decodedType = decodeURIComponent(type)
+  const { meta } = getMetaDataForPageBySlug(decodedType)
   const { title, description } = meta
 
   return {
@@ -52,7 +53,11 @@ async function UseCaseLeaderBoard({
   params: Promise<{ type: string }>
 }) {
   const { type } = await params
-  const { keyword, boardType, optionName } = getLeaderboardType(type)
+  const decodedType = decodeURIComponent(type)
+
+  const { keyword, boardType, optionName } = getLeaderboardType(decodedType)
+  const { meta } = getMetaDataForPageBySlug(decodedType)
+  const { title, description } = meta
 
   const rankingsRes = await getRankingsByKeyword({
     typeKeyword: keyword,
@@ -73,6 +78,8 @@ async function UseCaseLeaderBoard({
               : CATEGORIES
         }
         hideOptions={boardType === "top-usage"}
+        title={title}
+        description={description}
       />
     </main>
   )

@@ -315,7 +315,7 @@ export const PROGRAMMING_LANGUAGES = [
   },
   {
     name: "C#",
-    slug: "C#",
+    slug: "C%23",
   },
   {
     name: "Go",

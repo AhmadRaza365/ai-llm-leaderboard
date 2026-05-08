@@ -46,7 +46,11 @@ function RankingCard({
         }`}
       >
         <Image
-          src={image || "/images/icons/anthropic.jpg"}
+          src={
+            image
+              ? `${process.env.NEXT_PUBLIC_S3_CDN}/${image}`
+              : "/images/icons/ai-model.jpg"
+          }
           alt={name}
           width={100}
           height={100}

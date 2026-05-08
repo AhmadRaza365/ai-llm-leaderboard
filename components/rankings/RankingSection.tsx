@@ -20,6 +20,8 @@ type Props = {
     slug: string
   }[]
   preSelectedOption: string
+  title: string
+  description: string
 }
 
 function RankingSection({
@@ -27,8 +29,10 @@ function RankingSection({
   details,
   selectionOptions,
   preSelectedOption,
+  description,
+  title,
 }: Props) {
-  const { name, description, ranks } = details
+  const { name, description: rankingDescription, ranks } = details
   const router = useRouter()
   const ranking = (ranks || []).sort((a, b) => a.position - b.position)
 
@@ -53,14 +57,14 @@ function RankingSection({
                 : "text-lg font-bold tracking-tight sm:text-xl"
             }`}
           >
-            {name}
+            {title || name}
           </h2>
           <p
             className={`mt-3.5 text-pretty text-muted-foreground ${
               layout === "standalone" ? "text-base" : "text-sm"
             }`}
           >
-            {description}
+            {description || rankingDescription}
           </p>
         </section>
         <section className="min-w-fit">
@@ -133,8 +137,13 @@ function RankingSection({
           {ranking
             .slice(3, layout === "standalone" ? 10 : 5)
             .map((rank, index) => {
-              const { name, authorDisplayName, description, contextLength } =
-                rank.model
+              const {
+                name,
+                authorDisplayName,
+                description,
+                contextLength,
+                image,
+              } = rank.model
 
               return (
                 <RankingCard
@@ -145,6 +154,7 @@ function RankingSection({
                   rank={index + 4}
                   tokens={contextLength}
                   layoutType={layout}
+                  image={image}
                 />
               )
             })}

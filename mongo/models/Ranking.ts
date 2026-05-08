@@ -11,6 +11,7 @@ const rankingSchema = new Schema<IRanking>(
       required: true,
       index: true,
       trim: true,
+      lowercase: true,
     },
     description: { type: String, default: "" },
     lastUpdated: { type: Date, default: Date.now },
