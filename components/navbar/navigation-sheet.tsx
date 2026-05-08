@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTitle,
   SheetTrigger,
@@ -28,31 +29,37 @@ export const NavigationSheet = () => {
         <Logo />
 
         <div className="mt-8 flex flex-col gap-y-4 text-base">
-          <Link className="inline-block" href="/">
-            Home
-          </Link>
+          <SheetClose asChild>
+            <Link className="inline-block" href="/">
+              Home
+            </Link>
+          </SheetClose>
 
           <div>
             <div className="font-bold">Leaderboards</div>
             <ul className="mt-2 ml-1 space-y-3 border-l pl-4">
               {CATEGORIES.map((category, index) => (
                 <li key={index}>
-                  <Link
-                    className="flex items-center gap-2"
-                    href={`/leaderboards/${category.slug}`}
-                  >
-                    {category.name}
-                  </Link>
+                  <SheetClose asChild>
+                    <Link
+                      className="flex items-center gap-2"
+                      href={`/leaderboards/${category.slug}`}
+                    >
+                      {category.name}
+                    </Link>
+                  </SheetClose>
                 </li>
               ))}
             </ul>
           </div>
-          <Link className="inline-block" href="/models">
-            New Models
-          </Link>
-          <Link className="inline-block" href="/blog">
+          <SheetClose asChild>
+            <Link className="inline-block" href="/models">
+              New Models
+            </Link>
+          </SheetClose>
+          {/* <Link className="inline-block" href="/blog">
             Blog
-          </Link>
+          </Link> */}
         </div>
       </SheetContent>
     </Sheet>

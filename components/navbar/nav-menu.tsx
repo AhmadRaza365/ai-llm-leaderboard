@@ -40,11 +40,11 @@ export const NavMenu = (props: ComponentProps<typeof NavigationMenu>) => (
           <Link href="/models">New Models</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>
-      <NavigationMenuItem>
+      {/* <NavigationMenuItem>
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
           <Link href="/blog">Blog</Link>
         </NavigationMenuLink>
-      </NavigationMenuItem>
+      </NavigationMenuItem> */}
     </NavigationMenuList>
   </NavigationMenu>
 )

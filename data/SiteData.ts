@@ -12,4 +12,5 @@ export const SITE_DATA = {
   siteMetaImage: "/images/ai-llm-leaderboard.jpg",
   socialHandle: "ai-llm-leaderboard",
   author: "ai-llm-leaderboard",
+  siteEmail: "contact@ai-llm-leaderboard.com",
 }
