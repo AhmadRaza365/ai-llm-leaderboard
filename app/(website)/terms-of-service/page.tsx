@@ -7,7 +7,7 @@ function TermsService() {
         <h1>Terms of Service</h1>
         <p>Last Updated: May 09, 2026</p>
 
-        <p class="text-lg">
+        <p className="text-lg">
           Welcome to ai-llm-leaderboard. By accessing or using our website, you
           agree to be bound by these Terms of Service.
         </p>
