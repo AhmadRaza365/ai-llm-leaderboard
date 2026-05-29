@@ -2,8 +2,7 @@ import Link from "next/link"
 import { Separator } from "@/components/ui/separator"
 import { Logo } from "./Logo"
 import { SITE_DATA } from "@/data/SiteData"
-import { Input } from "./ui/input"
-import { Button } from "./ui/button"
+import SubscribeNewsLetter from "@/components/newsletter/SubscribeNewsLetter"
 
 const footerSections = [
   {
@@ -130,14 +129,7 @@ const Footer = () => {
               {/* Subscribe Newsletter */}
               <div className="mt-8 w-full">
                 <h6 className="font-medium">Stay up to date</h6>
-                <form className="mt-2 flex items-center gap-2">
-                  <Input
-                    className="max-w-64 grow"
-                    placeholder="Enter your email"
-                    type="email"
-                  />
-                  <Button>Subscribe</Button>
-                </form>
+                <SubscribeNewsLetter />
               </div>
             </div>
 
